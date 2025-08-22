@@ -52,6 +52,16 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "component": "reference",
+            "name": "background[src]",
+            "label": "Image"
+          },
+          {
+            "component": "richtext",
+            "name": "fancy",
+            "label": "Fancy"
           }
         ]
       }
