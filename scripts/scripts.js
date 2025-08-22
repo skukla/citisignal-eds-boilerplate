@@ -73,8 +73,7 @@ async function loadFonts() {
  */
 function buildAutoBlocks(main) {
   try {
-    //buildHeroBlock(main);
-    if (!main.querySelector('.hero')) buildHeroBlock(main);
+    buildHeroBlock(main);
   } catch (error) {
     console.error('Auto Blocking failed', error);
   }
