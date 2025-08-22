@@ -52,6 +52,16 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "component": "reference",
+            "name": "background[src]",
+            "label": "Image"
+          },
+          {
+            "component": "richtext",
+            "name": "fancy",
+            "label": "Fancy"
           }
         ]
       }
@@ -183,6 +193,22 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "product-recommendations",
+    "fields": [
+      {
+        "component": "text",
+        "name": "div:nth-child(1) > div:nth-child(2)",
+        "label": "Rec ID",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "div:nth-child(2) > div:nth-child(2)",
+        "label": "Current SKU"
       }
     ]
   },

@@ -44,12 +44,18 @@
     {
       "id": "section",
       "components": [
-        "text",
-        "image",
-        "hero",
+        "accordion",
         "cards",
+        "carousel",
         "columns",
-        "fragment"
+        "fragment",
+        "hero",
+        "product-recommendations",
+        "quote",
+        "search",
+        "tabs",
+        "video",
+        "image"
       ]
     }
   ]
