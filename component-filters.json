@@ -14,12 +14,12 @@
       "columns",
       "fragment",
       "hero",
-      "image",
+      "product-recommendations",
       "quote",
       "search",
       "tabs",
       "video",
-      "product-recommendations"
+      "image"
     ]
   },
   {
