@@ -109,7 +109,7 @@ function shuffleArray(array) {
 }
 
 let carouselId = 0;
-export default async function decorate(block) {
+async function decorate(block) {
   carouselId += 1;
   block.setAttribute('id', `carousel-${carouselId}`);
   const rows = Array.from(block.querySelectorAll(':scope > div'));
@@ -168,3 +168,5 @@ export default async function decorate(block) {
     startAutoplay(block);
   }
 }
+
+export default { showSlide, decorate };
