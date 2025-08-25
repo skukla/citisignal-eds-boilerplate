@@ -12,14 +12,18 @@
       "cards",
       "carousel",
       "columns",
+      "embed",
       "fragment",
+      "form",
       "hero",
-      "product-recommendations",
+      "image",
       "quote",
       "search",
       "tabs",
+      "table",
+      "text",
       "video",
-      "image"
+      "product-recommendations"
     ]
   },
   {
