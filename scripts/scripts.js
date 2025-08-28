@@ -26,7 +26,7 @@ const experimentationConfig = {
     mobile: () => window.innerWidth < 600,
     desktop: () => window.innerWidth >= 600,
     // define your custom audiences here as needed
-  }
+  },
 };
 
 let runExperimentation;
