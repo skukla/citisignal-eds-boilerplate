@@ -5,7 +5,6 @@
         "id": "product-recommendations",
         "plugins": {
           "da": {
-            "name": "product-recommendations",
             "unsafeHTML": "<div class=\"product-recommendations\"><div><div>recid</div><div></div></div><div><div>currentSku</div><div></div></div></div>"
           }
         }

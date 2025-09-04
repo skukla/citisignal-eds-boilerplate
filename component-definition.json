@@ -163,7 +163,6 @@
           "id": "product-recommendations",
           "plugins": {
             "da": {
-              "name": "product-recommendations",
               "unsafeHTML": "<div class=\"product-recommendations\"><div><div>recid</div><div></div></div><div><div>currentSku</div><div></div></div></div>"
             }
           }
@@ -173,7 +172,6 @@
           "id": "product-teaser",
           "plugins": {
             "da": {
-              "name": "product-teaser",
               "unsafeHTML": "<div class=\"product-teaser\"><div><div>sku</div><div></div></div><div><div>details-button</div><div></div></div><div><div>cart-button</div><div></div></div></div>"
             }
           }

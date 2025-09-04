@@ -5,7 +5,6 @@
       "id": "product-teaser",
       "plugins": {
         "da": {
-          "name": "product-teaser",
           "unsafeHTML": "<div class=\"product-teaser\"><div><div>sku</div><div></div></div><div><div>details-button</div><div></div></div><div><div>cart-button</div><div></div></div></div>"
         }
       }
