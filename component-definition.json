@@ -164,8 +164,7 @@
           "plugins": {
             "da": {
               "name": "product-recommendations",
-              "rows": 2,
-              "columns": 2
+              "unsafeHTML": "<div class=\"product-recommendations\"><div><div>recid</div><div></div></div><div><div>currentSku</div><div></div></div></div>"
             }
           }
         },
@@ -175,8 +174,7 @@
           "plugins": {
             "da": {
               "name": "product-teaser",
-              "rows": 1,
-              "columns": 1
+              "unsafeHTML": "<div class=\"product-teaser\"><div><div>sku</div><div></div></div><div><div>details-button</div><div></div></div><div><div>cart-button</div><div></div></div></div>"
             }
           }
         },

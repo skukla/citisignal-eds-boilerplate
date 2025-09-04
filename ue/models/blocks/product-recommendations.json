@@ -6,8 +6,7 @@
         "plugins": {
           "da": {
             "name": "product-recommendations",
-            "rows": 2,
-            "columns": 2
+            "unsafeHTML": "<div class=\"product-recommendations\"><div><div>recid</div><div></div></div><div><div>currentSku</div><div></div></div></div>"
           }
         }
       }
