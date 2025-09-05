@@ -203,12 +203,16 @@
         "component": "text",
         "name": "div:nth-child(1)>div:nth-child(2)>p:nth-child(1)",
         "label": "Rec ID",
-        "required": true
+        "required": true,
+        "valueType": "string",
+        "description": "The ID of the recommendation to display."
       },
       {
         "component": "text",
         "name": "div:nth-child(2)>div:nth-child(2)>p:nth-child(1)",
-        "label": "Current SKU"
+        "label": "Current SKU",
+        "valueType": "string",
+        "description": "The SKU of the current product, only required on when this component is used outside a product page."
       }
     ]
   },
