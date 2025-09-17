@@ -27,6 +27,7 @@
     background-color: var(--color-neutral-500);
     color: var(--color-brand-1000);
 }
+
 .accordion details summary:hover {
     background-color: var(--color-neutral-500);
     color: var(--color-brand-1000);
