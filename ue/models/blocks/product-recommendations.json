@@ -5,7 +5,7 @@
         "id": "product-recommendations",
         "plugins": {
           "da": {
-            "unsafeHTML": "<div class=\"product-recommendations\"><div><div>recid</div><div><p></p></div></div><div><div>currentSku</div><div><p></p></div></div></div>"
+            "unsafeHTML": "<div class=\"product-recommendations\"><div><div><p>recid</p></div><div><p>recid</p></div></div><div><div><p>currentSku</p></div><div><p>currentSku</p></div></div></div>"
           }
         }
       }
@@ -23,7 +23,8 @@
           {
             "component": "text",
             "name": "div:nth-child(2)>div:nth-child(2)>p:nth-child(1)",
-            "label": "Current SKU"
+            "label": "Current SKU",
+            "required": true
           }
         ]
       }
