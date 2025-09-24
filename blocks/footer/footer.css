@@ -16,14 +16,9 @@ footer .footer > div {
 
 }
 
-
-footer .footer > div > .storeview-switcher-button {
-    display: inline-flex;
-}
-footer .footer > div > .storeview-switcher-button .storeview-switcher-button {
+footer .footer div.storeview-switcher-button button.storeview-switcher-button {
     color: var(--background-color);
 }
-
 
 footer .footer p {
     margin: 0;
