@@ -139,6 +139,8 @@ export default async function decorate(block) {
     // Product List
     provider.render(SearchResults, {
       routeProduct: (product) => rootLink(`/products/${product.urlKey}/${product.sku}`),
+      imageWidth: 400,
+      imageHeight: 311,
       slots: {
         ProductImage: (ctx) => {
           const { product, defaultImageProps } = ctx;
@@ -150,8 +152,8 @@ export default async function decorate(block) {
             imageProps: defaultImageProps,
             wrapper: anchorWrapper,
             params: {
-              width: defaultImageProps.width,
-              height: defaultImageProps.height,
+              width: 400,
+              height: 311,
             },
           });
         },

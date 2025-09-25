@@ -378,6 +378,8 @@ export default async function decorate(block) {
           onSearchResult: (results) => {
             searchResult.style.display = results.length > 0 ? 'block' : 'none';
           },
+          imageWidth: 400,
+          imageHeight: 311,
           slots: {
             ProductImage: (ctx) => {
               const { product, defaultImageProps } = ctx;
@@ -389,8 +391,8 @@ export default async function decorate(block) {
                 imageProps: defaultImageProps,
                 wrapper: anchorWrapper,
                 params: {
-                  width: defaultImageProps.width,
-                  height: defaultImageProps.height,
+                  width: 400,
+                  height: 311,
                 },
               });
             },
