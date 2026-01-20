@@ -449,6 +449,10 @@ main .section[data-padding="xxhuge"] {
   padding: var(--spacing-xxhuge) 0;
 }
 
+main .section[data-padding="default"] {
+  padding: var(--spacing-xxsmall) 0;
+}
+
 main .section[data-margin="small"] {
   margin: var(--spacing-xsmall) 0;
 }
@@ -486,7 +490,6 @@ main .section[data-margin="xxhuge"] {
 }
 
 /* section metadata - styles - end */
-
 
 /* Base Design System Tokens */
 .dropin-design.dropin-design {
