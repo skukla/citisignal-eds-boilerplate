@@ -54,5 +54,11 @@
       "text",
       "image"
     ]
+  },
+  {
+    "id": "tabs",
+    "components": [
+      "tabs-item"
+    ]
   }
 ]

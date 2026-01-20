@@ -181,6 +181,15 @@
               "unsafeHTML": "<div class=\"product-recommendations\"><div><div>recid</div><div><p>PLACEHOLDER</p></div></div><div><div>currentSku</div><div><p>PLACEHOLDER</p></div></div></div>"
             }
           }
+        },
+        {
+          "title": "Product Teaser",
+          "id": "product-teaser",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div class=\"product-teaser\"><div><div>sku</div><div><p></p></div></div><div><div>details-button</div><div><p></p></div></div><div><div>cart-button</div><div><p></p></div></div></div>"
+            }
+          }
         }
       ]
     }
