@@ -159,11 +159,58 @@
           }
         },
         {
+          "title": "Quote",
+          "id": "quote",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div class=\"quote\"><div><div><p>Quotation</p></div></div><div><div><p>Author</p></div></div></div>"
+            }
+          }
+        },
+        {
+          "title": "Search",
+          "id": "search",
+          "plugins": {
+            "da": {
+              "name": "search",
+              "rows": 1,
+              "columns": 1
+            }
+          }
+        },
+        {
+          "title": "Tabs",
+          "id": "tabs",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div class=\"tabs\"><div><div><p></p></div><div></div></div></div>"
+            }
+          }
+        },
+        {
+          "title": "Tabs Item",
+          "id": "tabs-item",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div><div><p></p></div><div></div></div>"
+            }
+          }
+        },
+        {
           "title": "Targeted Block",
           "id": "targeted-block",
           "plugins": {
             "da": {
               "unsafeHTML": "<div class=\"targeted-block\"><div><div><p>Customer Groups</p></div><div><p>Specify id's of customer groups the block is visible to</p></div></div><div><div><p>Customer Segments</p></div><div><p>Specify id's of customer segments the block is visible to</p></div></div><div><div><p>Type</p></div><div><p>Provide a custom name. If there are multiple targeted block of the same type on a page, only the first block of the type will be displayed</p></div></div><div><div><p>Fragment</p></div><div><p>Relative path to a fragment. If specified the block content will be replaced with fragment content</p></div></div><div><div><p>Targeted Block Content</p></div></div></div>"
+            }
+          }
+        },
+        {
+          "title": "Video",
+          "id": "video",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div class=\"video\"><div><div><p><a href=\"\">video</a></p><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div></div></div>"
             }
           }
         }
