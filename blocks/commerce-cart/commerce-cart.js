@@ -33,7 +33,7 @@ import '../../scripts/initializers/cart.js';
 import '../../scripts/initializers/wishlist.js';
 
 import { readBlockConfig } from '../../scripts/aem.js';
-import { rootLink, fetchPlaceholders } from '../../scripts/commerce.js';
+import { rootLink, fetchPlaceholders, encodeSkuForUrl } from '../../scripts/commerce.js';
 
 export default async function decorate(block) {
   // Configuration
@@ -169,7 +169,7 @@ export default async function decorate(block) {
 
   // Render Containers
   // Encode slashes in SKU as __ (decoded by getSkuFromUrl in commerce.js)
-  const getProductLink = (product) => rootLink(`/products/${product.url.urlKey}/${product.topLevelSku?.replace(/\//g, '__') || ''}`);
+  const getProductLink = (product) => rootLink(`/products/${product.url.urlKey}/${encodeSkuForUrl(product.topLevelSku)}`);
   await Promise.all([
     // Cart List
     provider.render(CartSummaryList, {

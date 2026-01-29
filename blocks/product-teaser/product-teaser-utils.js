@@ -2,6 +2,7 @@ import { getHeaders } from '@dropins/tools/lib/aem/configs.js';
 import {
   rootLink,
   commerceEndpointWithQueryParams,
+  encodeSkuForUrl,
 } from '../../scripts/commerce.js';
 
 export async function performCatalogServiceQuery(query, variables) {
@@ -121,7 +122,7 @@ export function mapProductAcdl(product) {
       specialPrice,
       currencyCode,
     },
-    canonicalUrl: rootLink(`/products/${product.urlKey}/${product.sku}`),
+    canonicalUrl: rootLink(`/products/${product.urlKey}/${encodeSkuForUrl(product.sku)}`),
     mainImageUrl: product?.images?.[0]?.url,
   };
 }

@@ -10,6 +10,7 @@ import {
   CUSTOMER_RETURN_DETAILS_PATH,
   UPS_TRACKING_URL,
   rootLink,
+  encodeSkuForUrl,
 } from '../../scripts/commerce.js';
 
 // Initialize
@@ -18,7 +19,7 @@ import '../../scripts/initializers/account.js';
 export default async function decorate(block) {
   const { 'minified-view': minifiedViewConfig = 'false' } = readBlockConfig(block);
   // Encode slashes in SKU as __ (decoded by getSkuFromUrl in commerce.js)
-  const getProductLink = (productData) => (productData?.product ? rootLink(`/products/${productData.product.urlKey}/${productData.product.sku?.replace(/\//g, '__') || ''}`) : rootLink('#'));
+  const getProductLink = (productData) => (productData?.product ? rootLink(`/products/${productData.product.urlKey}/${encodeSkuForUrl(productData.product.sku)}`) : rootLink('#'));
 
   if (!checkIsAuthenticated()) {
     window.location.href = rootLink(CUSTOMER_LOGIN_PATH);

@@ -4,6 +4,7 @@ import { tryRenderAemAssetsImage } from '../../scripts/aem-assets.js';
 import {
   UPS_TRACKING_URL,
   rootLink,
+  encodeSkuForUrl,
 } from '../../scripts/commerce.js';
 
 // Initialize
@@ -30,10 +31,10 @@ export default async function decorate(block) {
     },
     routeProductDetails: (data) => {
       if (data?.orderItem) {
-        return rootLink(`/products/${data?.orderItem?.productUrlKey}/${data?.orderItem?.product?.sku}`);
+        return rootLink(`/products/${data?.orderItem?.productUrlKey}/${encodeSkuForUrl(data?.orderItem?.product?.sku)}`);
       }
       if (data?.product) {
-        return rootLink(`/products/${data?.product?.urlKey}/${data?.product?.sku}`);
+        return rootLink(`/products/${data?.product?.urlKey}/${encodeSkuForUrl(data?.product?.sku)}`);
       }
       return '#';
     },

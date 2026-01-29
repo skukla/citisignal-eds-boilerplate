@@ -17,7 +17,7 @@ import createMiniPDP from '../commerce-mini-pdp/commerce-mini-pdp.js';
 import '../../scripts/initializers/cart.js';
 
 import { readBlockConfig } from '../../scripts/aem.js';
-import { fetchPlaceholders, rootLink } from '../../scripts/commerce.js';
+import { fetchPlaceholders, rootLink, encodeSkuForUrl } from '../../scripts/commerce.js';
 
 export default async function decorate(block) {
   const {
@@ -161,7 +161,7 @@ export default async function decorate(block) {
 
   // Render MiniCart
   // Encode slashes in SKU as __ (decoded by getSkuFromUrl in commerce.js)
-  const getProductLink = (product) => rootLink(`/products/${product.url.urlKey}/${product.topLevelSku?.replace(/\//g, '__') || ''}`);
+  const getProductLink = (product) => rootLink(`/products/${product.url.urlKey}/${encodeSkuForUrl(product.topLevelSku)}`);
   await provider.render(MiniCart, {
     routeEmptyCartCTA: startShoppingURL ? () => rootLink(startShoppingURL) : undefined,
     routeCart: cartURL ? () => rootLink(cartURL) : undefined,

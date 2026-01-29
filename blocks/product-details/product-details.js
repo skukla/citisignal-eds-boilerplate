@@ -29,6 +29,7 @@ import {
   rootLink,
   setJsonLd,
   fetchPlaceholders,
+  encodeSkuForUrl,
 } from '../../scripts/commerce.js';
 
 // Initializers
@@ -415,9 +416,9 @@ async function setJsonLdProduct(product) {
       '@type': 'Brand',
       name: brand?.value,
     },
-    url: new URL(rootLink(`/products/${urlKey}/${sku}`), window.location),
+    url: new URL(rootLink(`/products/${urlKey}/${encodeSkuForUrl(sku)}`), window.location),
     sku,
-    '@id': new URL(rootLink(`/products/${urlKey}/${sku}`), window.location),
+    '@id': new URL(rootLink(`/products/${urlKey}/${encodeSkuForUrl(sku)}`), window.location),
   };
 
   if (variants.length > 1) {

@@ -570,6 +570,16 @@ export async function commerceEndpointWithQueryParams() {
 }
 
 /**
+ * Encodes a SKU for use in URLs.
+ * Replaces forward slashes with __ to prevent invalid URL paths.
+ * @param {string} sku - The product SKU
+ * @returns {string} URL-safe encoded SKU
+ */
+export function encodeSkuForUrl(sku) {
+  return sku?.replace(/\//g, '__') || '';
+}
+
+/**
  * Extracts the SKU from the current URL path.
  * @returns {string|null} The SKU extracted from the URL, or null if not found
  */

@@ -10,6 +10,7 @@ import {
   CUSTOMER_RETURNS_PATH,
   UPS_TRACKING_URL,
   checkIsAuthenticated,
+  encodeSkuForUrl,
 } from '../../scripts/commerce.js';
 
 // Initialize
@@ -48,7 +49,7 @@ export default async function decorate(block) {
       routeReturnDetails: ({ orderNumber, returnNumber }) => rootLink(`${CUSTOMER_RETURN_DETAILS_PATH}?orderRef=${orderNumber}&returnRef=${returnNumber}`),
       routeOrderDetails: ({ orderNumber }) => rootLink(`${CUSTOMER_ORDER_DETAILS_PATH}?orderRef=${orderNumber}`),
       routeReturnsList: () => rootLink(CUSTOMER_RETURNS_PATH),
-      routeProductDetails: (productData) => (productData?.product ? rootLink(`/products/${productData.product.urlKey}/${productData.product.sku}`) : rootLink('#')),
+      routeProductDetails: (productData) => (productData?.product ? rootLink(`/products/${productData.product.urlKey}/${encodeSkuForUrl(productData.product.sku)}`) : rootLink('#')),
     })(block);
   }
 }

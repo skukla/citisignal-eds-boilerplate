@@ -7,7 +7,7 @@ import { loadFragment } from '../fragment/fragment.js';
 
 import renderAuthCombine from './renderAuthCombine.js';
 import { renderAuthDropdown } from './renderAuthDropdown.js';
-import { fetchPlaceholders, rootLink } from '../../scripts/commerce.js';
+import { fetchPlaceholders, rootLink, encodeSkuForUrl } from '../../scripts/commerce.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -383,7 +383,7 @@ export default async function decorate(block) {
         render.render(SearchResults, {
           skeletonCount: pageSize,
           scope: 'popover',
-          routeProduct: ({ urlKey, sku }) => rootLink(`/products/${urlKey}/${sku}`),
+          routeProduct: ({ urlKey, sku }) => rootLink(`/products/${urlKey}/${encodeSkuForUrl(sku)}`),
           onSearchResult: (results) => {
             searchResult.style.display = results.length > 0 ? 'block' : 'none';
           },
@@ -391,7 +391,7 @@ export default async function decorate(block) {
             ProductImage: (ctx) => {
               const { product, defaultImageProps } = ctx;
               const anchorWrapper = document.createElement('a');
-              anchorWrapper.href = rootLink(`/products/${product.urlKey}/${product.sku}`);
+              anchorWrapper.href = rootLink(`/products/${product.urlKey}/${encodeSkuForUrl(product.sku)}`);
 
               tryRenderAemAssetsImage(ctx, {
                 alias: product.sku,

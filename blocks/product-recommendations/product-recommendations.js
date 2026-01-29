@@ -20,7 +20,7 @@ import { render as wishlistRender } from '@dropins/storefront-wishlist/render.js
 
 // Block-level
 import { readBlockConfig } from '../../scripts/aem.js';
-import { fetchPlaceholders, rootLink } from '../../scripts/commerce.js';
+import { fetchPlaceholders, rootLink, encodeSkuForUrl } from '../../scripts/commerce.js';
 
 // Initializers
 import '../../scripts/initializers/recommendations.js';
@@ -115,7 +115,7 @@ export default async function decorate(block) {
 
     const storeViewCode = getConfigValue('headers.cs.Magento-Store-View-Code');
     // Encode slashes in SKU as __ (decoded by getSkuFromUrl in commerce.js)
-    const getProductLink = (item) => rootLink(`/products/${item.urlKey}/${item.sku?.replace(/\//g, '__') || ''}`);
+    const getProductLink = (item) => rootLink(`/products/${item.urlKey}/${encodeSkuForUrl(item.sku)}`);
 
     // Get product view history
     context.userViewHistory = getProductViewHistory(storeViewCode);
@@ -188,7 +188,7 @@ export default async function decorate(block) {
                 UI.render(Button, {
                   children:
                     labels.Global?.SelectProductOptions,
-                  href: rootLink(`/products/${ctx.item.urlKey}/${ctx.item.sku}`),
+                  href: rootLink(`/products/${ctx.item.urlKey}/${encodeSkuForUrl(ctx.item.sku)}`),
                   variant: 'tertiary',
                 })(addToCart);
               }

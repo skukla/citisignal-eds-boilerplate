@@ -7,6 +7,7 @@ import {
   UPS_TRACKING_URL,
   checkIsAuthenticated,
   rootLink,
+  encodeSkuForUrl,
 } from '../../scripts/commerce.js';
 
 // Initialize
@@ -48,6 +49,6 @@ export default async function decorate(block) {
 
       return rootLink(`${returnDetailsPath}?orderRef=${encodedOrderRef}&returnRef=${returnNumber}`);
     },
-    routeProductDetails: (productData) => (productData?.product ? rootLink(`/products/${productData.product.urlKey}/${productData.product.sku}`) : rootLink('#')),
+    routeProductDetails: (productData) => (productData?.product ? rootLink(`/products/${productData.product.urlKey}/${encodeSkuForUrl(productData.product.sku)}`) : rootLink('#')),
   })(block);
 }

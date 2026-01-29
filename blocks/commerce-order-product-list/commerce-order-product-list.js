@@ -6,11 +6,11 @@ import { tryRenderAemAssetsImage } from '../../scripts/aem-assets.js';
 
 // Initialize
 import '../../scripts/initializers/order.js';
-import { rootLink } from '../../scripts/commerce.js';
+import { rootLink, encodeSkuForUrl } from '../../scripts/commerce.js';
 
 export default async function decorate(block) {
   // Encode slashes in SKU as __ (decoded by getSkuFromUrl in commerce.js)
-  const getProductLink = (product) => rootLink(`/products/${product.productUrlKey}/${product.productSku?.replace(/\//g, '__') || ''}`);
+  const getProductLink = (product) => rootLink(`/products/${product.productUrlKey}/${encodeSkuForUrl(product.productSku)}`);
   await orderRenderer.render(OrderProductList, {
     slots: {
       CartSummaryItemImage: (ctx) => {

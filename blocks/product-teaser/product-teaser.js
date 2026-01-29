@@ -2,6 +2,7 @@ import { readBlockConfig } from '../../scripts/aem.js';
 import { renderPrice, performCatalogServiceQuery, mapProductAcdl } from './product-teaser-utils.js';
 import {
   rootLink,
+  encodeSkuForUrl,
 } from '../../scripts/commerce.js';
 
 const productTeaserQuery = `query productTeaser($sku: String!) {
@@ -141,7 +142,7 @@ function renderProduct(product, config, block) {
       <h1>${name}</h1>
       <div class="price">${renderPrice(product, priceFormatter.format)}</div>
       <div class="actions">
-        ${config['details-button'] ? `<a href="${rootLink(`/products/${urlKey}/${sku}`)}" class="button primary">Details</a>` : ''}
+        ${config['details-button'] ? `<a href="${rootLink(`/products/${urlKey}/${encodeSkuForUrl(sku)}`)}" class="button primary">Details</a>` : ''}
         ${addToCartButtonHtml}
       </div>
     </div>
