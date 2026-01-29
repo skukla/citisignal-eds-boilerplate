@@ -11,9 +11,9 @@ import { WishlistToggle } from '@dropins/storefront-wishlist/containers/Wishlist
 import { render as wishlistRender } from '@dropins/storefront-wishlist/render.js';
 // Cart Dropin
 import * as cartApi from '@dropins/storefront-cart/api.js';
+import { events } from '@dropins/tools/event-bus.js';
 import { tryRenderAemAssetsImage } from '../../scripts/aem-assets.js';
 // Event Bus
-import { events } from '@dropins/tools/event-bus.js';
 // AEM
 import { readBlockConfig } from '../../scripts/aem.js';
 import { fetchPlaceholders, rootLink, encodeSkuForUrl } from '../../scripts/commerce.js';
@@ -149,7 +149,7 @@ export default async function decorate(block) {
             alias: product.sku,
             imageProps: {
               ...defaultImageProps,
-              style: 'aspect-ratio: 1; object-fit: contain; height: auto;'
+              style: 'aspect-ratio: 1; object-fit: contain; height: auto;',
             },
             wrapper: anchorWrapper,
             params: {
