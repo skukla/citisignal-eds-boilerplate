@@ -575,8 +575,10 @@ export async function commerceEndpointWithQueryParams() {
  */
 export function getSkuFromUrl() {
   const path = window.location.pathname;
-  const result = path.match(/\/products\/[\w|-]+\/([\w|-]+)$/);
-  return result?.[1];
+  // Match SKU after /products/{urlKey}/ - allow __ for encoded slashes
+  const result = path.match(/\/products\/[^/]+\/([^/]+)$/);
+  // Convert __ back to / to restore original SKU for Commerce API
+  return result?.[1] ? result[1].replace(/__/g, '/') : null;
 }
 
 /**

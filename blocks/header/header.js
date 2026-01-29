@@ -208,7 +208,16 @@ export default async function decorate(block) {
       });
   }
 
-  const navTools = nav.querySelector('.nav-tools');
+  let navTools = nav.querySelector('.nav-tools');
+
+  // Create nav-tools section if it doesn't exist in nav structure
+  // This handles nav content with only 2 sections (brand, sections)
+  // instead of 3 (brand, sections, tools) - prevents null reference errors
+  if (!navTools) {
+    navTools = document.createElement('div');
+    navTools.classList.add('nav-tools');
+    nav.appendChild(navTools);
+  }
 
   /** Wishlist */
   const wishlist = document.createRange().createContextualFragment(`
