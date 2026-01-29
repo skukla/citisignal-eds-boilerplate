@@ -4,7 +4,7 @@ import { getConfigValue } from '@dropins/tools/lib/aem/configs.js';
 
 // Dropin Components
 import { Button, Icon, provider as UI } from '@dropins/tools/components.js';
-import { tryRenderAemAssetsImage } from '@dropins/tools/lib/aem/assets.js';
+import { tryRenderAemAssetsImage } from '../../scripts/aem-assets.js';
 
 // Cart Dropin
 import * as cartApi from '@dropins/storefront-cart/api.js';
@@ -114,7 +114,8 @@ export default async function decorate(block) {
     }
 
     const storeViewCode = getConfigValue('headers.cs.Magento-Store-View-Code');
-    const getProductLink = (item) => rootLink(`/products/${item.urlKey}/${item.sku}`);
+    // Encode slashes in SKU as __ (decoded by getSkuFromUrl in commerce.js)
+    const getProductLink = (item) => rootLink(`/products/${item.urlKey}/${item.sku?.replace(/\//g, '__') || ''}`);
 
     // Get product view history
     context.userViewHistory = getProductViewHistory(storeViewCode);

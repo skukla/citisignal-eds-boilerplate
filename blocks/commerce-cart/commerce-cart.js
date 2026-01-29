@@ -19,7 +19,7 @@ import GiftOptions from '@dropins/storefront-cart/containers/GiftOptions.js';
 import { render as wishlistRender } from '@dropins/storefront-wishlist/render.js';
 import { WishlistToggle } from '@dropins/storefront-wishlist/containers/WishlistToggle.js';
 import { WishlistAlert } from '@dropins/storefront-wishlist/containers/WishlistAlert.js';
-import { tryRenderAemAssetsImage } from '@dropins/tools/lib/aem/assets.js';
+import { tryRenderAemAssetsImage } from '../../scripts/aem-assets.js';
 
 // API
 import { publishShoppingCartViewEvent } from '@dropins/storefront-cart/api.js';
@@ -168,7 +168,8 @@ export default async function decorate(block) {
   }
 
   // Render Containers
-  const getProductLink = (product) => rootLink(`/products/${product.url.urlKey}/${product.topLevelSku}`);
+  // Encode slashes in SKU as __ (decoded by getSkuFromUrl in commerce.js)
+  const getProductLink = (product) => rootLink(`/products/${product.url.urlKey}/${product.topLevelSku?.replace(/\//g, '__') || ''}`);
   await Promise.all([
     // Cart List
     provider.render(CartSummaryList, {

@@ -1,7 +1,7 @@
 import { render as provider } from '@dropins/storefront-cart/render.js';
 import MiniCart from '@dropins/storefront-cart/containers/MiniCart.js';
 import { events } from '@dropins/tools/event-bus.js';
-import { tryRenderAemAssetsImage } from '@dropins/tools/lib/aem/assets.js';
+import { tryRenderAemAssetsImage } from '../../scripts/aem-assets.js';
 import {
   InLineAlert,
   Icon,
@@ -160,7 +160,8 @@ export default async function decorate(block) {
   block.innerHTML = '';
 
   // Render MiniCart
-  const getProductLink = (product) => rootLink(`/products/${product.url.urlKey}/${product.topLevelSku}`);
+  // Encode slashes in SKU as __ (decoded by getSkuFromUrl in commerce.js)
+  const getProductLink = (product) => rootLink(`/products/${product.url.urlKey}/${product.topLevelSku?.replace(/\//g, '__') || ''}`);
   await provider.render(MiniCart, {
     routeEmptyCartCTA: startShoppingURL ? () => rootLink(startShoppingURL) : undefined,
     routeCart: cartURL ? () => rootLink(cartURL) : undefined,

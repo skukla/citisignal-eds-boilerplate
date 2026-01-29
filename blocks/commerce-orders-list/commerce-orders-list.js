@@ -1,6 +1,6 @@
 import { render as accountRenderer } from '@dropins/storefront-account/render.js';
 import { OrdersList } from '@dropins/storefront-account/containers/OrdersList.js';
-import { tryRenderAemAssetsImage } from '@dropins/tools/lib/aem/assets.js';
+import { tryRenderAemAssetsImage } from '../../scripts/aem-assets.js';
 import { readBlockConfig } from '../../scripts/aem.js';
 import {
   checkIsAuthenticated,
@@ -17,7 +17,8 @@ import '../../scripts/initializers/account.js';
 
 export default async function decorate(block) {
   const { 'minified-view': minifiedViewConfig = 'false' } = readBlockConfig(block);
-  const getProductLink = (productData) => (productData?.product ? rootLink(`/products/${productData.product.urlKey}/${productData.product.sku}`) : rootLink('#'));
+  // Encode slashes in SKU as __ (decoded by getSkuFromUrl in commerce.js)
+  const getProductLink = (productData) => (productData?.product ? rootLink(`/products/${productData.product.urlKey}/${productData.product.sku?.replace(/\//g, '__') || ''}`) : rootLink('#'));
 
   if (!checkIsAuthenticated()) {
     window.location.href = rootLink(CUSTOMER_LOGIN_PATH);
