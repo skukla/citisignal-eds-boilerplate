@@ -67,12 +67,24 @@ function renderPlaceholder(config, block) {
 }
 
 /**
- * Returns a picture element specifically using AEM Assets format as documented:
+ * Check if a URL is an AEM Assets URL
+ * AEM Assets URLs contain '/adobe/assets/' in the pathname
+ */
+function isAemAssetsUrl(url) {
+  try {
+    const parsedUrl = new URL(url, window.location);
+    return parsedUrl.pathname.includes('/adobe/assets/');
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Render image for AEM Assets URLs using optimized delivery format
  * https://adobe-aem-assets-delivery-experimental.redoc.ly/
  */
-function renderImage(product, size = 250) {
+function renderAemAssetsImage(product, imageUrl, label, size) {
   const { name } = product;
-  const { url: imageUrl, label } = product.images[0];
 
   // Extract assetId from the URL
   const urlParts = imageUrl.split('/');
@@ -106,6 +118,35 @@ function renderImage(product, size = 250) {
       <img width="${size}" src="${createUrlForWidth(baseUrl, size, 'jpg')}" loading="eager" alt="${label}" />
     </picture>
   `);
+}
+
+/**
+ * Render image for standard Commerce media URLs
+ * Uses the URL directly without AEM Assets optimization
+ */
+function renderStandardImage(imageUrl, label, size) {
+  // Ensure URL has protocol for img src
+  const fullUrl = imageUrl.startsWith('//') ? `https:${imageUrl}` : imageUrl;
+
+  return document.createRange().createContextualFragment(`<picture>
+      <img width="${size}" src="${fullUrl}" loading="eager" alt="${label}" />
+    </picture>
+  `);
+}
+
+/**
+ * Returns a picture element for product images
+ * Automatically detects AEM Assets URLs vs standard Commerce URLs
+ * and renders appropriately for each type
+ */
+function renderImage(product, size = 250) {
+  const { url: imageUrl, label } = product.images[0];
+
+  // Detect URL type and render appropriately
+  if (isAemAssetsUrl(imageUrl)) {
+    return renderAemAssetsImage(product, imageUrl, label, size);
+  }
+  return renderStandardImage(imageUrl, label, size);
 }
 
 function renderProduct(product, config, block) {
