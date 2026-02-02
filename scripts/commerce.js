@@ -685,8 +685,10 @@ export function getProductLink(urlKey, sku) {
     console.warn('getProductLink: sku is missing or empty', { urlKey, sku });
   }
   const sanitizedUrlKey = urlKey ? sanitizeName(urlKey) : '';
-  const sanitizedSku = sku ? sanitizeName(sku) : '';
-  return rootLink(`/products/${sanitizedUrlKey}/${sanitizedSku}`);
+  // Encode slashes as __ (double underscore) to preserve SKU structure in URL
+  // getSkuFromUrl() decodes __ back to / when extracting SKU
+  const encodedSku = sku ? sku.replace(/\//g, '__') : '';
+  return rootLink(`/products/${sanitizedUrlKey}/${encodedSku}`);
 }
 
 /**
