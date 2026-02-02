@@ -2,21 +2,29 @@ import { render as orderRenderer } from '@dropins/storefront-order/render.js';
 import { OrderProductList } from '@dropins/storefront-order/containers/OrderProductList.js';
 import GiftOptions from '@dropins/storefront-cart/containers/GiftOptions.js';
 import { render as CartProvider } from '@dropins/storefront-cart/render.js';
-import { tryRenderAemAssetsImage } from '../../scripts/aem-assets.js';
+import { tryRenderAemAssetsImage } from '@dropins/tools/lib/aem/assets.js';
 
 // Initialize
 import '../../scripts/initializers/order.js';
-import { rootLink, encodeSkuForUrl } from '../../scripts/commerce.js';
+import { getProductLink, rootLink } from '../../scripts/commerce.js';
 
 export default async function decorate(block) {
-  // Encode slashes in SKU as __ (decoded by getSkuFromUrl in commerce.js)
-  const getProductLink = (product) => rootLink(`/products/${product.productUrlKey}/${encodeSkuForUrl(product.productSku)}`);
+  const createProductLink = (productData) => {
+    if (!productData) {
+      return rootLink('#');
+    }
+    const { product, productUrlKey } = productData;
+    if (!product || !productUrlKey || !product.sku) {
+      return rootLink('#');
+    }
+    return getProductLink(productUrlKey, product.sku);
+  };
   await orderRenderer.render(OrderProductList, {
     slots: {
       CartSummaryItemImage: (ctx) => {
         const { data, defaultImageProps } = ctx;
         const anchor = document.createElement('a');
-        anchor.href = getProductLink(data);
+        anchor.href = createProductLink(data);
 
         tryRenderAemAssetsImage(ctx, {
           alias: data.product.sku,
@@ -57,6 +65,6 @@ export default async function decorate(block) {
         ctx.appendChild(giftOptions);
       },
     },
-    routeProductDetails: getProductLink,
+    routeProductDetails: createProductLink,
   })(block);
 }

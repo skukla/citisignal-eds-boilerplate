@@ -1,13 +1,13 @@
+import { tryRenderAemAssetsImage } from '@dropins/tools/lib/aem/assets.js';
 import { render as orderRenderer } from '@dropins/storefront-order/render.js';
 import { OrderReturns } from '@dropins/storefront-order/containers/OrderReturns.js';
-import { tryRenderAemAssetsImage } from '../../scripts/aem-assets.js';
 import {
   CUSTOMER_RETURN_DETAILS_PATH,
   RETURN_DETAILS_PATH,
   UPS_TRACKING_URL,
   checkIsAuthenticated,
   rootLink,
-  encodeSkuForUrl,
+  getProductLink,
 } from '../../scripts/commerce.js';
 
 // Initialize
@@ -49,6 +49,6 @@ export default async function decorate(block) {
 
       return rootLink(`${returnDetailsPath}?orderRef=${encodedOrderRef}&returnRef=${returnNumber}`);
     },
-    routeProductDetails: (productData) => (productData?.product ? rootLink(`/products/${productData.product.urlKey}/${encodeSkuForUrl(productData.product.sku)}`) : rootLink('#')),
+    routeProductDetails: (productData) => (productData?.product ? getProductLink(productData.product.urlKey, productData.product.sku) : rootLink('#')),
   })(block);
 }

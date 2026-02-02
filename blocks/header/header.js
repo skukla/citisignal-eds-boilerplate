@@ -1,13 +1,13 @@
 // Drop-in Tools
 import { events } from '@dropins/tools/event-bus.js';
 
-import { tryRenderAemAssetsImage } from '../../scripts/aem-assets.js';
+import { tryRenderAemAssetsImage } from '@dropins/tools/lib/aem/assets.js';
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
+import { fetchPlaceholders, getProductLink, rootLink } from '../../scripts/commerce.js';
 
 import renderAuthCombine from './renderAuthCombine.js';
 import { renderAuthDropdown } from './renderAuthDropdown.js';
-import { fetchPlaceholders, rootLink, encodeSkuForUrl } from '../../scripts/commerce.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -208,16 +208,7 @@ export default async function decorate(block) {
       });
   }
 
-  let navTools = nav.querySelector('.nav-tools');
-
-  // Create nav-tools section if it doesn't exist in nav structure
-  // This handles nav content with only 2 sections (brand, sections)
-  // instead of 3 (brand, sections, tools) - prevents null reference errors
-  if (!navTools) {
-    navTools = document.createElement('div');
-    navTools.classList.add('nav-tools');
-    nav.appendChild(navTools);
-  }
+  const navTools = nav.querySelector('.nav-tools');
 
   /** Wishlist */
   const wishlist = document.createRange().createContextualFragment(`
@@ -383,7 +374,7 @@ export default async function decorate(block) {
         render.render(SearchResults, {
           skeletonCount: pageSize,
           scope: 'popover',
-          routeProduct: ({ urlKey, sku }) => rootLink(`/products/${urlKey}/${encodeSkuForUrl(sku)}`),
+          routeProduct: ({ urlKey, sku }) => getProductLink(urlKey, sku),
           onSearchResult: (results) => {
             searchResult.style.display = results.length > 0 ? 'block' : 'none';
           },
@@ -391,7 +382,7 @@ export default async function decorate(block) {
             ProductImage: (ctx) => {
               const { product, defaultImageProps } = ctx;
               const anchorWrapper = document.createElement('a');
-              anchorWrapper.href = rootLink(`/products/${product.urlKey}/${encodeSkuForUrl(product.sku)}`);
+              anchorWrapper.href = getProductLink(product.urlKey, product.sku);
 
               tryRenderAemAssetsImage(ctx, {
                 alias: product.sku,
@@ -449,6 +440,9 @@ export default async function decorate(block) {
             search({
               phrase,
               pageSize,
+              filter: [
+                { attribute: 'visibility', in: ['Search', 'Catalog, Search'] },
+              ],
             }, { scope: 'popover' });
           },
         })(searchForm);

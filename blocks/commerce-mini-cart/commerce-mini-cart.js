@@ -1,6 +1,7 @@
 import { render as provider } from '@dropins/storefront-cart/render.js';
 import MiniCart from '@dropins/storefront-cart/containers/MiniCart.js';
 import { events } from '@dropins/tools/event-bus.js';
+import { tryRenderAemAssetsImage } from '@dropins/tools/lib/aem/assets.js';
 import {
   InLineAlert,
   Icon,
@@ -8,16 +9,15 @@ import {
   Button,
 } from '@dropins/tools/components.js';
 import { h } from '@dropins/tools/preact.js';
-import { tryRenderAemAssetsImage } from '../../scripts/aem-assets.js';
 
 import createModal from '../modal/modal.js';
-import createMiniPDP from '../commerce-mini-pdp/commerce-mini-pdp.js';
+import createMiniPDP from '../../scripts/components/commerce-mini-pdp/commerce-mini-pdp.js';
 
 // Initializers
 import '../../scripts/initializers/cart.js';
 
 import { readBlockConfig } from '../../scripts/aem.js';
-import { fetchPlaceholders, rootLink, encodeSkuForUrl } from '../../scripts/commerce.js';
+import { fetchPlaceholders, rootLink, getProductLink } from '../../scripts/commerce.js';
 
 export default async function decorate(block) {
   const {
@@ -160,20 +160,19 @@ export default async function decorate(block) {
   block.innerHTML = '';
 
   // Render MiniCart
-  // Encode slashes in SKU as __ (decoded by getSkuFromUrl in commerce.js)
-  const getProductLink = (product) => rootLink(`/products/${product.url.urlKey}/${encodeSkuForUrl(product.topLevelSku)}`);
+  const createProductLink = (product) => getProductLink(product.url.urlKey, product.topLevelSku);
   await provider.render(MiniCart, {
     routeEmptyCartCTA: startShoppingURL ? () => rootLink(startShoppingURL) : undefined,
     routeCart: cartURL ? () => rootLink(cartURL) : undefined,
     routeCheckout: checkoutURL ? () => rootLink(checkoutURL) : undefined,
-    routeProduct: getProductLink,
+    routeProduct: createProductLink,
     undo: undo === 'true',
 
     slots: {
       Thumbnail: (ctx) => {
         const { item, defaultImageProps } = ctx;
         const anchorWrapper = document.createElement('a');
-        anchorWrapper.href = getProductLink(item);
+        anchorWrapper.href = createProductLink(item);
 
         tryRenderAemAssetsImage(ctx, {
           alias: item.sku,

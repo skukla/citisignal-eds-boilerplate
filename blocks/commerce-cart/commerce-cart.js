@@ -19,21 +19,21 @@ import GiftOptions from '@dropins/storefront-cart/containers/GiftOptions.js';
 import { render as wishlistRender } from '@dropins/storefront-wishlist/render.js';
 import { WishlistToggle } from '@dropins/storefront-wishlist/containers/WishlistToggle.js';
 import { WishlistAlert } from '@dropins/storefront-wishlist/containers/WishlistAlert.js';
-import { publishShoppingCartViewEvent } from '@dropins/storefront-cart/api.js';
-import { tryRenderAemAssetsImage } from '../../scripts/aem-assets.js';
+import { tryRenderAemAssetsImage } from '@dropins/tools/lib/aem/assets.js';
 
 // API
+import { publishShoppingCartViewEvent } from '@dropins/storefront-cart/api.js';
 
 // Modal and Mini PDP
+import createMiniPDP from '../../scripts/components/commerce-mini-pdp/commerce-mini-pdp.js';
 import createModal from '../modal/modal.js';
-import createMiniPDP from '../commerce-mini-pdp/commerce-mini-pdp.js';
 
 // Initializers
 import '../../scripts/initializers/cart.js';
 import '../../scripts/initializers/wishlist.js';
 
 import { readBlockConfig } from '../../scripts/aem.js';
-import { rootLink, fetchPlaceholders, encodeSkuForUrl } from '../../scripts/commerce.js';
+import { fetchPlaceholders, rootLink, getProductLink } from '../../scripts/commerce.js';
 
 export default async function decorate(block) {
   // Configuration
@@ -168,13 +168,12 @@ export default async function decorate(block) {
   }
 
   // Render Containers
-  // Encode slashes in SKU as __ (decoded by getSkuFromUrl in commerce.js)
-  const getProductLink = (product) => rootLink(`/products/${product.url.urlKey}/${encodeSkuForUrl(product.topLevelSku)}`);
+  const createProductLink = (product) => getProductLink(product.url.urlKey, product.topLevelSku);
   await Promise.all([
     // Cart List
     provider.render(CartSummaryList, {
       hideHeading: hideHeading === 'true',
-      routeProduct: getProductLink,
+      routeProduct: createProductLink,
       routeEmptyCartCTA: startShoppingURL ? () => rootLink(startShoppingURL) : undefined,
       maxItems: parseInt(maxItems, 10) || undefined,
       attributesToHide: hideAttributes
@@ -187,7 +186,7 @@ export default async function decorate(block) {
         Thumbnail: (ctx) => {
           const { item, defaultImageProps } = ctx;
           const anchorWrapper = document.createElement('a');
-          anchorWrapper.href = getProductLink(item);
+          anchorWrapper.href = createProductLink(item);
 
           tryRenderAemAssetsImage(ctx, {
             alias: item.sku,
@@ -254,7 +253,7 @@ export default async function decorate(block) {
 
     // Order Summary
     provider.render(OrderSummary, {
-      routeProduct: getProductLink,
+      routeProduct: createProductLink,
       routeCheckout: checkoutURL ? () => rootLink(checkoutURL) : undefined,
       slots: {
         EstimateShipping: async (ctx) => {

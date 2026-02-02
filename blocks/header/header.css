@@ -22,7 +22,7 @@ header nav {
   display: grid;
   grid-template:
   'hamburger brand tools wrapperPopUpButton' var(--nav-height)
-  'sections sections sections ...' 1fr / auto 1fr auto auto;  
+  'sections sections sections ...' 1fr / auto 1fr auto auto;
   align-items: center;
   gap: 0 16px;
   margin: auto;
@@ -34,7 +34,7 @@ header nav {
 
 header nav[aria-expanded='true'] {
   grid-template:
-    'hamburger brand' var(--nav-height) 
+    'hamburger brand' var(--nav-height)
     'sections sections' 1fr
     'tools tools' var(--nav-height) / auto 1fr;
   overflow-y: auto;
@@ -42,6 +42,10 @@ header nav[aria-expanded='true'] {
 }
 
 @media (min-width: 900px) {
+  header .nav-wrapper {
+    position: relative;
+  }
+
   header nav {
     display: flex;
     justify-content: space-between;
@@ -231,10 +235,6 @@ header nav .nav-sections ul > li:empty {
   header nav .nav-sections .nav-drop {
     border-radius: 0;
     padding: 10px var(--spacing-small);
-  }
-
-  header nav .nav-sections .nav-drop {
-    cursor: pointer;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li a {

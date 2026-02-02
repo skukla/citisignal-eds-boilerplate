@@ -1,10 +1,9 @@
 import { render as orderRenderer } from '@dropins/storefront-order/render.js';
 import { ShippingStatus } from '@dropins/storefront-order/containers/ShippingStatus.js';
-import { tryRenderAemAssetsImage } from '../../scripts/aem-assets.js';
+import { tryRenderAemAssetsImage } from '@dropins/tools/lib/aem/assets.js';
 import {
   UPS_TRACKING_URL,
-  rootLink,
-  encodeSkuForUrl,
+  getProductLink,
 } from '../../scripts/commerce.js';
 
 // Initialize
@@ -31,10 +30,10 @@ export default async function decorate(block) {
     },
     routeProductDetails: (data) => {
       if (data?.orderItem) {
-        return rootLink(`/products/${data?.orderItem?.productUrlKey}/${encodeSkuForUrl(data?.orderItem?.product?.sku)}`);
+        return getProductLink(data?.orderItem?.productUrlKey, data?.orderItem?.product?.sku);
       }
       if (data?.product) {
-        return rootLink(`/products/${data?.product?.urlKey}/${encodeSkuForUrl(data?.product?.sku)}`);
+        return getProductLink(data?.product?.urlKey, data?.product?.sku);
       }
       return '#';
     },
