@@ -29,14 +29,12 @@ export default function decorate(block) {
     heromain.append(herocontent);
   });
 
-  // Fix: Use img.getAttribute('src') instead of img.src in case src hasn't resolved properly (may be blank)
+  // Fix: Use img.getAttribute('src') instead of img.src in case src hasn't resolved properly
   heromain.querySelectorAll('picture > img').forEach((img) => {
     const src = img.getAttribute('src') || img.src;
     const alt = img.getAttribute('alt') || '';
     if (src) {
-      img.closest('picture').replaceWith(
-        createOptimizedPicture(src, alt, false, [{ width: '750' }])
-      );
+      img.closest('picture').replaceWith(createOptimizedPicture(src, alt, false, [{ width: '750' }]));
     }
   });
   block.replaceChildren(heromain);
