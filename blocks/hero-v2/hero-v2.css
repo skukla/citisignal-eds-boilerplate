@@ -130,6 +130,7 @@
   right: 8%;
   top: 35%;
 }
+
 .hero-v2 .hero-v2-image p:nth-child(5) {
     max-width: 1200px;
     margin: 0 auto;
@@ -139,6 +140,7 @@
     right: 8%;
     top: 45%;
 }
+
 .hero-v2 .hero-v2-image p:nth-child(5) a {
     font-size: 14px;
     font-weight: 600;
@@ -149,5 +151,6 @@
     color: var(--background-color);
     text-transform: uppercase;
 }
+
 /* Style for UE Structure - end */
 
