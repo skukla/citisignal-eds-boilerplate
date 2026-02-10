@@ -90,14 +90,14 @@
   top: 35%;
 }
 
-.hero-v2 .hero-v2-body p.button-container {
+.hero-v2 .hero-v2-body p:nth-child(4) {
     max-width: 1200px;
     margin: 0 auto;
     color: var(--background-color);
     width: 30%;
     position: absolute;
     right: 8%;
-    top: 45%;
+    top: 47%;
 }
 
 .hero-v2 .hero-v2-body a.button {
@@ -110,6 +110,17 @@
     color: var(--background-color);
     text-transform: uppercase;
 }
+
+.hero-v2 .hero-v2-body p:nth-child(5) {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--background-color);
+  width: 30%;
+  position: absolute;
+  right: 8%;
+  top: 55%;
+}
+
 
 @media (min-width: 900px) {
   .hero-v2 {
@@ -138,7 +149,7 @@
     width: 30%;
     position: absolute;
     right: 8%;
-    top: 45%;
+    top: 47%;
 }
 
 .hero-v2 .hero-v2-image p:nth-child(5) a {
@@ -150,6 +161,16 @@
     background-color: var(--color-opacity-24);
     color: var(--background-color);
     text-transform: uppercase;
+}
+
+.hero-v2 .hero-v2-image p:nth-child(6) {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--background-color);
+  width: 30%;
+  position: absolute;
+  right: 8%;
+  top: 55%;
 }
 
 /* Style for UE Structure - end */
