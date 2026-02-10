@@ -251,11 +251,11 @@
               "fields": [
                 {
                   "name": "image",
-                  "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>picture>img[src]"
+                  "selector": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img[src]"
                 },
                 {
                   "name": "imageAlt",
-                  "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>picture>img[alt]"
+                  "selector": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img[alt]"
                 },
                 {
                   "name": "title",

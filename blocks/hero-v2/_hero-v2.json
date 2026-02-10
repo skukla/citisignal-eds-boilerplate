@@ -9,8 +9,8 @@
           "rows": 1,
           "columns": 1,
           "fields": [
-            { "name": "image", "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>picture>img[src]" },
-            { "name": "imageAlt", "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>picture>img[alt]" },
+            { "name": "image", "selector": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img[src]" },
+            { "name": "imageAlt", "selector": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img[alt]" },
             { "name": "title", "selector": "div:nth-child(1)>div:nth-child(1)>h2:nth-child(2)" },
             { "name": "subtitle", "selector": "div:nth-child(1)>div:nth-child(1)>h3:nth-child(3)" },
             { "name": "description", "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(4)" },
