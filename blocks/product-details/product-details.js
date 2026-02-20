@@ -88,24 +88,24 @@ export default async function decorate(block) {
     <div class="product-details__alert"></div>
     <div class="product-details__wrapper">
       <div class="product-details__left-column">
-        <div class="product-details__gallery"></div>
+        <div class="product-details__gallery" data-inspector-source="catalog"></div>
       </div>
       <div class="product-details__right-column">
-        <div class="product-details__header"></div>
-        <div class="product-details__price"></div>
-        <div class="product-details__gallery"></div>
-        <div class="product-details__short-description"></div>
+        <div class="product-details__header" data-inspector-source="catalog"></div>
+        <div class="product-details__price" data-inspector-source="catalog"></div>
+        <div class="product-details__gallery" data-inspector-source="catalog"></div>
+        <div class="product-details__short-description" data-inspector-source="catalog"></div>
         <div class="product-details__gift-card-options"></div>
         <div class="product-details__configuration">
-          <div class="product-details__options"></div>
+          <div class="product-details__options" data-inspector-source="catalog"></div>
           <div class="product-details__quantity"></div>
           <div class="product-details__buttons">
-            <div class="product-details__buttons__add-to-cart"></div>
+            <div class="product-details__buttons__add-to-cart" data-inspector-source="commerce"></div>
             <div class="product-details__buttons__add-to-wishlist"></div>
           </div>
         </div>
-        <div class="product-details__description"></div>
-        <div class="product-details__attributes"></div>
+        <div class="product-details__description" data-inspector-source="catalog"></div>
+        <div class="product-details__attributes" data-inspector-source="catalog"></div>
       </div>
     </div>
   `);

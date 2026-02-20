@@ -64,4 +64,10 @@ if (document.prerendering) {
   initAnalytics();
 }
 
-// add delayed functionality here
+// Demo Inspector (optional — loads only when submodule is present)
+try {
+  const { initInspector } = await import('./demo-inspector-init.js');
+  await initInspector();
+} catch {
+  // Inspector not available — skip silently
+}

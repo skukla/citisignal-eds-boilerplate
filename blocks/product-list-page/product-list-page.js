@@ -31,10 +31,10 @@ export default async function decorate(block) {
     <div class="search__wrapper">
       <div class="search__result-info"></div>
       <div class="search__view-facets"></div>
-      <div class="search__facets"></div>
-      <div class="search__product-sort"></div>
-      <div class="search__product-list"></div>
-      <div class="search__pagination"></div>
+      <div class="search__facets" data-inspector-source="search"></div>
+      <div class="search__product-sort" data-inspector-source="search"></div>
+      <div class="search__product-list" data-inspector-source="search"></div>
+      <div class="search__pagination" data-inspector-source="search"></div>
     </div>
   `);
 
