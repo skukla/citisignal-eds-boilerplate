@@ -14,9 +14,9 @@ const SOURCE_MAP = {
   'product-teaser': 'catalog',
   'product-recommendations': 'catalog',
   'product-list-page': 'search',
-  'search': 'search',
-  'header': 'commerce',
-  'footer': 'commerce',
+  search: 'search',
+  header: 'commerce',
+  footer: 'commerce',
 };
 
 /**
@@ -26,6 +26,8 @@ const SOURCE_MAP = {
 function tagBlockSources() {
   document.querySelectorAll('[data-block-name]').forEach((block) => {
     if (block.hasAttribute('data-inspector-source')) return;
+    // Skip Level 1 if any descendant already has Level 2 sub-container tags
+    if (block.querySelector('[data-inspector-source]')) return;
     const name = block.getAttribute('data-block-name');
     const source = SOURCE_MAP[name] || (name.startsWith('commerce-') ? 'commerce' : null);
     if (source) {
@@ -41,6 +43,7 @@ function tagBlockSources() {
  */
 export async function initInspector() {
   try {
+    // eslint-disable-next-line import/no-unresolved, import/no-absolute-path -- AEM runtime path
     await import('/demo-inspector/dist/demo-inspector.js');
     tagBlockSources();
     const el = document.createElement('demo-inspector');
