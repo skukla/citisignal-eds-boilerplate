@@ -56,7 +56,8 @@
             "da": {
               "name": "accordion",
               "rows": 1,
-              "columns": 2
+              "columns": 2,
+              "unsafeHTML": "<div class=\"accordion\"><div><div><h3>FAQ Question</h3></div><div><p>Answer content goes here.</p></div></div><div><div><h3>Another Question</h3></div><div><p>More details here.</p></div></div></div>"
             }
           }
         },
@@ -90,7 +91,8 @@
           "plugins": {
             "da": {
               "rows": 1,
-              "columns": 2
+              "columns": 2,
+              "unsafeHTML": "<div class=\"cards\"><div><div><picture><img src=\"/content/dam/demo/placeholder.png\" alt=\"Card image\"></picture></div><div><h3>Card Title</h3><p>Card description text.</p></div></div></div>"
             }
           }
         },
@@ -166,7 +168,8 @@
               "name": "columns",
               "rows": 1,
               "columns": 2,
-              "behaviour": "columns"
+              "behaviour": "columns",
+              "unsafeHTML": "<div class=\"columns\"><div><div><p>Column 1 content</p></div><div><p>Column 2 content</p></div></div></div>"
             }
           }
         },
@@ -236,7 +239,8 @@
                   "name": "text",
                   "selector": "div>div>h1"
                 }
-              ]
+              ],
+              "unsafeHTML": "<div class=\"hero\"><div><div><picture><img src=\"/content/dam/demo/placeholder.png\" alt=\"Hero image\"></picture></div><div><h1>Hero Heading</h1><p>Hero description text.</p></div></div></div>"
             }
           }
         },
@@ -299,7 +303,8 @@
                   "name": "author",
                   "selector": "div:nth-child(2)>div:nth-child(1)>p:nth-child(1)"
                 }
-              ]
+              ],
+              "unsafeHTML": "<div class=\"quote\"><div><div><p>Design is not just what it looks like. Design is how it works.</p></div><div><p>Steve Jobs</p></div></div></div>"
             }
           }
         },
