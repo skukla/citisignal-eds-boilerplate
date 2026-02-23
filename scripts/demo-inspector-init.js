@@ -21,11 +21,13 @@ const SOURCE_MAP = {
 
 /**
  * Tags block containers with their primary data source (Level 1).
- * Skips blocks that already have data-inspector-source set (Level 2 takes precedence).
+ * Skips blocks that already have data-inspector-source set on the block itself
+ * or on any child element (Level 2 granular tagging takes precedence).
  */
 function tagBlockSources() {
   document.querySelectorAll('[data-block-name]').forEach((block) => {
     if (block.hasAttribute('data-inspector-source')) return;
+    if (block.querySelector('[data-inspector-source]')) return;
     const name = block.getAttribute('data-block-name');
     const source = SOURCE_MAP[name] || (name.startsWith('commerce-') ? 'commerce' : null);
     if (source) {
