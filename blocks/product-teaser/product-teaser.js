@@ -100,7 +100,7 @@ function renderAemAssetsImage(product, imageUrl, label, size) {
     const seoName = name.replace(' ', '-');
     newUrl.pathname = `${newUrl.pathname}/${assetId}/as/${seoName}.${format}`;
     newUrl.searchParams.set('width', w);
-    newUrl.searchParams.set('quality', '95');
+    newUrl.searchParams.delete('quality');
     newUrl.searchParams.delete('dpr');
     newUrl.searchParams.delete('bg-color');
     return newUrl.toString();
@@ -115,7 +115,7 @@ function renderAemAssetsImage(product, imageUrl, label, size) {
   return document.createRange().createContextualFragment(`<picture>
       <source srcset="${webpUrl}" />
       <source srcset="${jpgUrl}" />
-      <img width="${size}" src="${createUrlForWidth(baseUrl, size, 'jpg')}" loading="eager" alt="${label}" />
+      <img height="${size}" width="${size}" src="${createUrlForWidth(baseUrl, size, 'jpg')}" loading="eager" alt="${label}" />
     </picture>
   `);
 }

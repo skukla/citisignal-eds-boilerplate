@@ -16,18 +16,31 @@
 
 .quote blockquote .quote-quotation > :first-child {
   text-indent: -0.5ch;
+  display: inline;
 }
 
-.quote blockquote .quote-quotation > :first-child::before,
-.quote blockquote .quote-quotation > :last-child::after {
+.quote blockquote .quote-quotation > p {
+  text-indent: -0.5ch;
+  display: inline;
+}
+
+main blockquote p::before,
+main blockquote p::after {
+  content: "";
+  display: inline;
+}
+
+.quote blockquote .quote-quotation::before,
+.quote blockquote .quote-quotation::after {
   line-height: 0;
+  display: inline;
 }
 
-.quote blockquote .quote-quotation > :first-child::before {
+.quote blockquote .quote-quotation::before {
   content: "“";
 }
 
-.quote blockquote .quote-quotation > :last-child::after {
+.quote blockquote .quote-quotation::after {
   content: "”";
 }
 

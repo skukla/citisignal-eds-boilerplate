@@ -195,16 +195,6 @@
           }
         },
         {
-          "title": "Enrichment",
-          "id": "enrichment",
-          "model": "enrichment",
-          "plugins": {
-            "da": {
-              "type": "key-value-block"
-            }
-          }
-        },
-        {
           "title": "Fragment",
           "id": "fragment",
           "model": "fragment",
@@ -251,6 +241,102 @@
           }
         },
         {
+          "title": "Hero V2",
+          "id": "hero-v2",
+          "model": "hero-v2",
+          "plugins": {
+            "da": {
+              "rows": 1,
+              "columns": 1,
+              "fields": [
+                {
+                  "name": "image",
+                  "selector": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img[src]"
+                },
+                {
+                  "name": "imageAlt",
+                  "selector": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img[alt]"
+                },
+                {
+                  "name": "title",
+                  "selector": "div:nth-child(1)>div:nth-child(1)>h2:nth-child(2)"
+                },
+                {
+                  "name": "subtitle",
+                  "selector": "div:nth-child(1)>div:nth-child(1)>h3:nth-child(3)"
+                },
+                {
+                  "name": "description",
+                  "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(4)"
+                },
+                {
+                  "name": "ctaLabel",
+                  "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(5)>a:nth-child(1)"
+                },
+                {
+                  "name": "ctaUrl",
+                  "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(5)>a:nth-child(1)[href]"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "Quote",
+          "id": "quote",
+          "model": "quote",
+          "plugins": {
+            "da": {
+              "name": "quote",
+              "rows": 1,
+              "columns": 1,
+              "fields": [
+                {
+                  "name": "quote",
+                  "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)"
+                },
+                {
+                  "name": "author",
+                  "selector": "div:nth-child(2)>div:nth-child(1)>p:nth-child(1)"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "Tabs",
+          "id": "tabs",
+          "model": "tabs",
+          "filter": "tabs",
+          "plugins": {
+            "da": {
+              "columns": 1,
+              "rows": 2
+            }
+          }
+        },
+        {
+          "title": "Tabs Item",
+          "id": "tabs-item",
+          "model": "tabs-item",
+          "plugins": {
+            "da": {
+              "columns": 0,
+              "rows": 2,
+              "fields": [
+                {
+                  "name": "name",
+                  "selector": "div:nth-child(1)>p:nth-child(1)"
+                },
+                {
+                  "name": "content",
+                  "selector": "div:nth-child(2)"
+                }
+              ]
+            }
+          }
+        },
+        {
           "title": "Targeted Block",
           "id": "targeted-block",
           "model": "targeted-block",
@@ -261,292 +347,28 @@
           }
         },
         {
-          "title": "Commerce Account Header",
-          "id": "commerce-account-header",
-          "model": "commerce-account-header",
+          "title": "Video",
+          "id": "video",
+          "model": "video",
           "plugins": {
             "da": {
-              "type": "key-value-block"
-            }
-          }
-        },
-        {
-          "title": "Commerce Account Sidebar",
-          "id": "commerce-account-sidebar",
-          "model": "commerce-account-sidebar",
-          "plugins": {
-            "da": {
+              "name": "video",
               "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Addresses",
-          "id": "commerce-addresses",
-          "model": "commerce-addresses",
-          "plugins": {
-            "da": {
-              "type": "key-value-block"
-            }
-          }
-        },
-        {
-          "title": "Commerce Cart",
-          "id": "commerce-cart",
-          "model": "commerce-cart",
-          "plugins": {
-            "da": {
-              "type": "key-value-block"
-            }
-          }
-        },
-        {
-          "title": "Commerce Checkout Success",
-          "id": "commerce-checkout-success",
-          "model": "commerce-checkout-success",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Checkout",
-          "id": "commerce-checkout",
-          "model": "commerce-checkout",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Confirm Account",
-          "id": "commerce-confirm-account",
-          "model": "commerce-confirm-account",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Create Account",
-          "id": "commerce-create-account",
-          "model": "commerce-create-account",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Create Password",
-          "id": "commerce-create-password",
-          "model": "commerce-create-password",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Create Return",
-          "id": "commerce-create-return",
-          "model": "commerce-create-return",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Customer Details",
-          "id": "commerce-customer-details",
-          "model": "commerce-customer-details",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Customer Information",
-          "id": "commerce-customer-information",
-          "model": "commerce-customer-information",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Forgot Password",
-          "id": "commerce-forgot-password",
-          "model": "commerce-forgot-password",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Gift Options",
-          "id": "commerce-gift-options",
-          "model": "commerce-gift-options",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Login",
-          "id": "commerce-login",
-          "model": "commerce-login",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Mini Cart",
-          "id": "commerce-mini-cart",
-          "model": "commerce-mini-cart",
-          "plugins": {
-            "da": {
-              "type": "key-value-block"
-            }
-          }
-        },
-        {
-          "title": "Commerce Order Cost Summary",
-          "id": "commerce-order-cost-summary",
-          "model": "commerce-order-cost-summary",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Order Header",
-          "id": "commerce-order-header",
-          "model": "commerce-order-header",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Order Product List",
-          "id": "commerce-order-product-list",
-          "model": "commerce-order-product-list",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Order Returns",
-          "id": "commerce-order-returns",
-          "model": "commerce-order-returns",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Order Status",
-          "id": "commerce-order-status",
-          "model": "commerce-order-status",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Orders List",
-          "id": "commerce-orders-list",
-          "model": "commerce-orders-list",
-          "plugins": {
-            "da": {
-              "type": "key-value-block"
-            }
-          }
-        },
-        {
-          "title": "Commerce Return Header",
-          "id": "commerce-return-header",
-          "model": "commerce-return-header",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Returns List",
-          "id": "commerce-returns-list",
-          "model": "commerce-returns-list",
-          "plugins": {
-            "da": {
-              "type": "key-value-block"
-            }
-          }
-        },
-        {
-          "title": "Commerce Search Order",
-          "id": "commerce-search-order",
-          "model": "commerce-search-order",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Shipping Status",
-          "id": "commerce-shipping-status",
-          "model": "commerce-shipping-status",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Wishlist",
-          "id": "commerce-wishlist",
-          "model": "commerce-wishlist",
-          "plugins": {
-            "da": {
-              "type": "key-value-block"
+              "columns": 1,
+              "fields": [
+                {
+                  "name": "videoUrl",
+                  "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)[href]"
+                },
+                {
+                  "name": "videoUrlText",
+                  "selector": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)"
+                },
+                {
+                  "name": "posterImage",
+                  "selector": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(2)>img:nth-child(3)[src]"
+                }
+              ]
             }
           }
         }
@@ -580,6 +402,16 @@
           "title": "Product Recommendations",
           "id": "product-recommendations",
           "model": "product-recommendations",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Product Teaser",
+          "id": "product-teaser",
+          "model": "product-teaser",
           "plugins": {
             "da": {
               "type": "key-value-block"
