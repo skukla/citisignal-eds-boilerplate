@@ -192,7 +192,6 @@
           "filter": "columns-cell",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div></div>",
               "behaviour": "columns-cell"
             }
           }
