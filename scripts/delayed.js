@@ -63,11 +63,3 @@ if (document.prerendering) {
 } else {
   initAnalytics();
 }
-
-// Demo Inspector (optional — loads only when submodule is present)
-try {
-  const { initInspector } = await import('./demo-inspector-init.js');
-  await initInspector();
-} catch {
-  // Inspector not available — skip silently
-}

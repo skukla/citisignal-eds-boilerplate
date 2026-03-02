@@ -75,7 +75,7 @@ export default async function decorate(block) {
   // Layout
   const fragment = document.createRange().createContextualFragment(`
     <div class="recommendations__wrapper">
-      <div class="recommendations__list" data-inspector-source="catalog"></div>
+      <div class="recommendations__list"></div>
     </div>
   `);
 
@@ -154,7 +154,6 @@ export default async function decorate(block) {
 
               const addToCart = document.createElement('div');
               addToCart.className = 'footer__button--add-to-cart';
-              addToCart.setAttribute('data-inspector-source', 'commerce');
               wrapper.appendChild(addToCart);
 
               if (ctx.item.itemType === 'SimpleProductView') {

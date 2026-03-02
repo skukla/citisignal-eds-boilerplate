@@ -166,21 +166,21 @@ function renderProduct(product, config, block) {
   // Fix: Always show Add to Cart button if config['cart-button'] is true, regardless of __typename
   if (config['cart-button']) {
     if (__typename === 'SimpleProductView' && addToCartAllowed) {
-      addToCartButtonHtml = '<button class="add-to-cart secondary" data-inspector-source="commerce">Add to Cart</button>';
+      addToCartButtonHtml = '<button class="add-to-cart secondary">Add to Cart</button>';
     } else if (__typename === 'SimpleProductView' && !addToCartAllowed) {
-      addToCartButtonHtml = '<button class="add-to-cart secondary" disabled data-inspector-source="commerce">Add to Cart</button>';
+      addToCartButtonHtml = '<button class="add-to-cart secondary" disabled>Add to Cart</button>';
     } else {
       // For non-simple products, show disabled Add to Cart button
-      addToCartButtonHtml = '<button class="add-to-cart secondary" disabled data-inspector-source="commerce">Add to Cart</button>';
+      addToCartButtonHtml = '<button class="add-to-cart secondary" disabled>Add to Cart</button>';
     }
   }
 
   const fragment = document.createRange().createContextualFragment(`
-    <div class="image" data-inspector-source="catalog">
+    <div class="image">
     </div>
     <div class="details">
-      <h1 data-inspector-source="catalog">${name}</h1>
-      <div class="price" data-inspector-source="catalog">${renderPrice(product, priceFormatter.format)}</div>
+      <h1>${name}</h1>
+      <div class="price">${renderPrice(product, priceFormatter.format)}</div>
       <div class="actions">
         ${config['details-button'] ? `<a href="${rootLink(`/products/${urlKey}/${encodeSkuForUrl(sku)}`)}" class="button primary">Details</a>` : ''}
         ${addToCartButtonHtml}
